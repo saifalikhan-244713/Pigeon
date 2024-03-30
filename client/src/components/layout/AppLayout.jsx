@@ -26,7 +26,7 @@
 // import Title from "../shared/Title";
 // import ChatList from "../specific/ChatList";
 // import Profile from "../specific/Profile";
-// import Title from "../shared/Title";
+import Title from "../shared/Title";
 import Header from "./Header";
 
 const AppLayout = () => (WrappedComponent) => {
@@ -93,14 +93,14 @@ const AppLayout = () => (WrappedComponent) => {
 
     return (
       <div>
-        {/* <Title title="chat app" description="helloDEsciption"/> */}
-        <Header/>
-        <WrappedComponent {...props}/>
+        <Title />
+        <Header />
+        <WrappedComponent {...props} />
         <div>footer</div>
         {/* <Title />
-        <Header />
+        <Header /> */}
 
-        <DeleteChatMenu
+        {/* <DeleteChatMenu
           dispatch={dispatch}
           deleteMenuAnchor={deleteMenuAnchor}
         />
