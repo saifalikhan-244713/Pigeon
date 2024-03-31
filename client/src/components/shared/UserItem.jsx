@@ -13,7 +13,7 @@ const UserItem = ({
   const { name, _id, avatar } = user;
 
   return (
-    <ListItem sx={{ bgcolor: "Red" }}>
+    <ListItem>
       <Stack
         direction={"row"}
         alignItems={"center"}
@@ -32,7 +32,7 @@ const UserItem = ({
             WebkitBoxOrient: "vertical",
             overflow: "hidden",
             textOverflow: "ellipsis",
-            // width: "100%",
+            width: "100%",
           }}
         >
           {name}
