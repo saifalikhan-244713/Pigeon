@@ -2,7 +2,7 @@
 // import { Drawer, Grid, Skeleton } from "@mui/material";
 // import  { useCallback, useEffect, useRef, useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
-// import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 // import {
 //   NEW_MESSAGE_ALERT,
 //   NEW_REQUEST,
@@ -26,20 +26,21 @@
 // import Title from "../shared/Title";
 // import ChatList from "../specific/ChatList";
 // import Profile from "../specific/Profile";
-import { samepleChats } from "../../constants/sampleData";
+import { sampleChats } from "../../constants/sampleData";
 import Title from "../shared/Title";
 import ChatList from "../specific/ChatList";
 import Header from "./Header";
 import { Grid } from "@mui/material";
+import Profile from "../specific/Profile";
 
 const AppLayout = () => (WrappedComponent) => {
   return (props) => {
-    // const params = useParams();
+    const params = useParams();
     // const navigate = useNavigate();
     // const dispatch = useDispatch();
     // const socket = getSocket();
 
-    // const chatId = params.chatId;
+    const chatId = params.chatId;
     // const deleteMenuAnchor = useRef(null);
 
     // const [onlineUsers, setOnlineUsers] = useState([]);
@@ -56,11 +57,13 @@ const AppLayout = () => (WrappedComponent) => {
     //   getOrSaveFromStorage({ key: NEW_MESSAGE_ALERT, value: newMessagesAlert });
     // }, [newMessagesAlert]);
 
-    // const handleDeleteChat = (e, chatId, groupChat) => {
-    //   dispatch(setIsDeleteMenu(true));
-    //   dispatch(setSelectedDeleteChat({ chatId, groupChat }));
-    //   deleteMenuAnchor.current = e.currentTarget;
-    // };
+    const handleDeleteChat = (e, _id, groupChat) => {
+      // dispatch(setIsDeleteMenu(true));
+      // dispatch(setSelectedDeleteChat({ chatId, groupChat }));
+      // deleteMenuAnchor.current = e.currentTarget;
+      e.preventDefault();
+      console.log("Delete chat", _id, groupChat);
+    };
 
     // const handleMobileClose = () => dispatch(setIsMobile(false));
 
@@ -108,7 +111,7 @@ const AppLayout = () => (WrappedComponent) => {
             }}
             height={"100%"}
           >
-            <ChatList chats={samepleChats} />
+            <ChatList chats={sampleChats} chatId={chatId} handleDeleteChat={handleDeleteChat} />
           </Grid>
           <Grid item xs={12} sm={8} md={5} lg={6} height={"100%"}>
             <WrappedComponent {...props} />
@@ -124,13 +127,13 @@ const AppLayout = () => (WrappedComponent) => {
               bgcolor: "rgba(0,0,0,0.85)",
             }}
           >
-            third
+            <Profile/>
           </Grid>
         </Grid>
         {/* <div>footer</div> */}
         {/* <Title />
         <Header /> */}
-
+ 
         {/* <DeleteChatMenu
           dispatch={dispatch}
           deleteMenuAnchor={deleteMenuAnchor}
