@@ -5,6 +5,7 @@ import {
   Toolbar,
   Tooltip,
   Typography,
+  Backdrop
 } from "@mui/material";
 import {
   Add as AddIcon,
@@ -116,20 +117,20 @@ const Header = () => {
         </AppBar>
       </Box>
       {isSearch && (
-        <Suspense fallback={<div>Loading...</div>}>
-          <SearchDialog />
+        <Suspense fallback={<Backdrop open />}>
+        <SearchDialog />
         </Suspense>
       )}
 
       {isNotification && (
-        <Suspense fallback={<div>Loading...</div>}>
-          <NotifcationDialog />
+        <Suspense fallback={<Backdrop open />}>
+        <NotifcationDialog />
         </Suspense>
       )}
 
       {isNewGroup && (
-        <Suspense fallback={<div>Loading...</div>}>
-          <NewGroupDialog />
+        <Suspense fallback={<Backdrop open />}>
+        <NewGroupDialog />
         </Suspense>
       )}
 

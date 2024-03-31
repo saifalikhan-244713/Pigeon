@@ -26,7 +26,9 @@
 // import Title from "../shared/Title";
 // import ChatList from "../specific/ChatList";
 // import Profile from "../specific/Profile";
+import { samepleChats } from "../../constants/sampleData";
 import Title from "../shared/Title";
+import ChatList from "../specific/ChatList";
 import Header from "./Header";
 import { Grid } from "@mui/material";
 
@@ -105,15 +107,10 @@ const AppLayout = () => (WrappedComponent) => {
               display: { xs: "none", sm: "block" },
             }}
             height={"100%"}
-          >first</Grid>
-          <Grid
-            item
-            xs={12}
-            sm={8}
-            md={5}
-            lg={6}
-            height={"100%"}
           >
+            <ChatList chats={samepleChats} />
+          </Grid>
+          <Grid item xs={12} sm={8} md={5} lg={6} height={"100%"}>
             <WrappedComponent {...props} />
           </Grid>
           <Grid
