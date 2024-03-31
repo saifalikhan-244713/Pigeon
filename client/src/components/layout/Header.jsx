@@ -16,6 +16,8 @@ import {
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { Suspense, useState, lazy } from "react";
+
+
 const SearchDialog = lazy(() => import("../specific/Search"));
 const NotifcationDialog = lazy(() => import("../specific/Notifications"));
 const NewGroupDialog = lazy(() => import("../specific/NewGroup"));
@@ -149,3 +151,13 @@ const IconBtn = ({ title, icon, onClick, value }) => {
   );
 };
 export default Header;
+
+// const Header = () => {
+//   return (
+//     <div>
+//       header
+//     </div>
+//   )
+// }
+
+// export default Header
