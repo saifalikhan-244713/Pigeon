@@ -13,6 +13,10 @@ import {
   Send as SendIcon,
 } from "@mui/icons-material";
 import { InputBox } from "../components/styles/StyledComponents";
+import { orange } from "../constants/color";
+import FileMenu from "../components/dialogs/FileMenu";
+import { sampleMessage } from "../constants/sampleData";
+import MessageComponent from "../components/shared/MessageComponent";
 // import FileMenu from "../components/dialogs/FileMenu";
 // import MessageComponent from "../components/shared/MessageComponent";
 // import { getSocket } from "../socket";
@@ -33,9 +37,14 @@ import { InputBox } from "../components/styles/StyledComponents";
 // import { TypingLoader } from "../components/layout/Loaders";
 // import { useNavigate } from "react-router-dom";
 
+const user = {
+  _id: "ljsbdf",
+  name: "saif",
+};
+
 const Chat = () => {
   const containerRef = useRef(null);
-
+  const fileMenuRef = useRef(null);
   return (
     <Fragment>
       <Stack
@@ -49,7 +58,11 @@ const Chat = () => {
           overflowX: "hidden",
           overflowY: "auto",
         }}
-      ></Stack>
+      >
+        {sampleMessage.map((i) => (
+          <MessageComponent key={i._id} message={i} user={user} />
+        ))}
+      </Stack>
       <form
         style={{
           height: "10%",
@@ -84,7 +97,7 @@ const Chat = () => {
             type="submit"
             sx={{
               rotate: "-30deg",
-              // bgcolor: orange,
+              bgcolor: orange,
               color: "white",
               marginLeft: "1rem",
               padding: "0.5rem",
@@ -97,6 +110,8 @@ const Chat = () => {
           </IconButton>
         </Stack>
       </form>
+      {/* <FileMenu anchorE1={fileMenuAnchor} chatId={chatId} /> */}
+      <FileMenu />
     </Fragment>
   );
 };

@@ -198,7 +198,7 @@ export default function Login() {
                   src={avatar.preview}
                 />
 
-                <IconButton
+                 <IconButton
                   sx={{
                     position: "absolute",
                     bottom: "0",
