@@ -1,15 +1,16 @@
 import { useInputValidation } from "6pp";
 import {
   Button,
+  // Button,
   Dialog,
   DialogTitle,
-  // Skeleton,
   TextField,
+  // Skeleton,
+  // TextField,
   Typography,
 } from "@mui/material";
 import { Stack } from "@mui/material";
 
-import UserItem from "../shared/UserItem";
 // import { useDispatch, useSelector } from "react-redux";
 // import {
 //   useAvailableFriendsQuery,
@@ -20,6 +21,7 @@ import UserItem from "../shared/UserItem";
 // import toast from "react-hot-toast";
 import { useState } from "react";
 import { sampleUsers } from "../../constants/sampleData";
+import UserItem from "../shared/UserItem";
 
 const NewGroup = () => {
   const groupName = useInputValidation("");
@@ -33,19 +35,18 @@ const NewGroup = () => {
   // const [newGroup, isLoadingNewGroup] = useAsyncMutation(useNewGroupMutation);
 
   const selectMemberHandler = (id) => {
-    setMembers((prev) =>
-      prev.map((user) =>
-        user._id === id ? { ...user, isAddded: !user.isAdded } : user
-      )
-    );
+    // setMembers((prev) =>
+    //   prev.map((user) =>
+    //     user._id === id ? { ...user, isAddded: !user.isAdded } : user
+    //   )
+    // );
     setSelectedMembers((prev) =>
       prev.includes(id)
         ? prev.filter((currElement) => currElement !== id)
         : [...prev, id]
     );
   };
-
-
+  console.log(selectedMembers);
   // const errors = [
   //   {
   //     isError,
@@ -66,17 +67,18 @@ const NewGroup = () => {
     // closeHandler();
   };
 
-  // const closeHandler = () => {
+  const closeHandler = () => {
     // dispatch(setIsNewGroup(false));
-  // };
+  };
 
   return (
-    // <Dialog onClose={closeHandler} open={isNewGroup}>
-    <Dialog open>
+    <Dialog onClose={closeHandler} open>
       <Stack p={{ xs: "1rem", sm: "3rem" }} width={"25rem"} spacing={"2rem"}>
         <DialogTitle textAlign={"center"} variant="h4">
           New Group
         </DialogTitle>
+
+        {/* <TextField /> */}
 
         <TextField
           label="Group Name"
@@ -85,9 +87,15 @@ const NewGroup = () => {
         />
 
         <Typography variant="body1">Members</Typography>
+
         <Stack>
           {members.map((i) => (
-            <UserItem user={i} key={i._id} handler={selectMemberHandler} />
+            <UserItem
+              user={i}
+              key={i._id}
+              handler={selectMemberHandler}
+              isAdded={selectedMembers.includes(i._id)}
+            />
           ))}
         </Stack>
 
