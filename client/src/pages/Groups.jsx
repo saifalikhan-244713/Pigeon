@@ -35,6 +35,7 @@ const AddMemberDialog = lazy(() =>
   import("../components/dialogs/AddMemberDialog")
 );
 const isAddMember = false;
+
 const Groups = () => {
   const chatId = useSearchParams()[0].get("group");
 
@@ -84,6 +85,11 @@ const Groups = () => {
     // navigate("/groups");
   };
 
+  const removeMemberHandler = (id) => {
+    // removeMember("Removing Member...", { chatId, userId });
+    console.log("remove member", id);
+  };
+
   useEffect(() => {
     // const groupData = groupDetails.data;
     // if (groupData) {
@@ -91,6 +97,10 @@ const Groups = () => {
     //   setGroupNameUpdatedValue(groupData.chat.name);
     //   setMembers(groupData.chat.members);
     // }
+    if (chatId) {
+      setGroupName(`group name ${chatId}`);
+      setGroupNameUpdatedValue(`group name ${chatId}`);
+    }
 
     // return () => {
     //   setGroupName("");
@@ -98,8 +108,6 @@ const Groups = () => {
     //   setMembers([]);
     //   setIsEdit(false);
     // };
-    setGroupName(`group name ${chatId}`);
-    setGroupNameUpdatedValue(`group name ${chatId}`);
 
     return () => {
       setGroupName("");
@@ -218,6 +226,7 @@ const Groups = () => {
             xs: "none",
             sm: "block",
           },
+          backgroundImage: bgGradient,
         }}
         sm={4}
       >
@@ -279,8 +288,18 @@ const Groups = () => {
                   />
                 ))
               )} */}
-              {sampleUsers.map((i)=>(
-                <UserItem user={i} isAdded />
+              {sampleUsers.map((i) => (
+                <UserItem
+                  user={i}
+                  key={i._id}
+                  isAdded
+                  styling={{
+                    boxShadow: "0 0 0.5rem  rgba(0,0,0,0.2)",
+                    padding: "1rem 2rem",
+                    borderRadius: "1rem",
+                  }}
+                  handler={removeMemberHandler}
+                />
               ))}
             </Stack>
 

@@ -7,3 +7,4 @@ eigth=>3:09:35
 ninth=>3:48:53
 tenth=>4:12:00
 eleventh=>4:40:00
+twelth=>5:02::33

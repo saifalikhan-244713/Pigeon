@@ -44,7 +44,7 @@ const user = {
 
 const Chat = () => {
   const containerRef = useRef(null);
-  const fileMenuRef = useRef(null);
+  // const fileMenuRef = useRef(null);
   return (
     <Fragment>
       <Stack

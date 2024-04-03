@@ -14,6 +14,8 @@ export const sampleChats = [
     groupChat: true,
     members: ["1", "2"],
   },
+
+
 ];
 
 export const sampleUsers = [

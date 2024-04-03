@@ -63,7 +63,7 @@ import { Avatar, IconButton, ListItem, Stack, Typography } from "@mui/material";
 
 // export default memo(UserItem);
 
-const UserItem = ({ user, handler, handlerIsLoading, isAdded = false }) => {
+const UserItem = ({ user, handler, handlerIsLoading, isAdded = false, styling={} }) => {
   const { name, _id, avatar } = user;
   return (
     <ListItem>
@@ -72,6 +72,7 @@ const UserItem = ({ user, handler, handlerIsLoading, isAdded = false }) => {
         alignItems={"center"}
         spacing={"1rem"}
         width={"100%"}
+        {...styling}
       >
         <Avatar />
         <Typography
