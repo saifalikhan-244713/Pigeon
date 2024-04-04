@@ -8,3 +8,4 @@ ninth=>3:48:53
 tenth=>4:12:00
 eleventh=>4:40:00
 twelth=>5:02::33
+thirteenth=>5:56:07
