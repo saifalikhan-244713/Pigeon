@@ -78,7 +78,17 @@ const Dashboard = () => {
     <AdminLayout>
       <Container component={"main"}>
         {Appbar}
-        <Stack direction={"row"} spacing={"2rem"} flexWrap={"wrap"}>
+        <Stack
+          direction={{
+            xs: "column",
+            lg: "row",
+          }}
+          spacing={"2rem"}
+          flexWrap={"wrap"}
+          justifyContent={"center"}
+          alignItems={{ xs: "center", lg: "stretch" }}
+          sx={{ gap: "2rem" }}
+        >
           <Paper
             elevation={3}
             sx={{
@@ -110,7 +120,10 @@ const Dashboard = () => {
               maxWidth: "25rem",
             }}
           >
-            <DoughnutChart />
+            <DoughnutChart
+              labels={["Single Chats", "Group Chats"]}
+              value={[23, 66]}
+            />
             <Stack
               position={"absolute"}
               direction={"row"}

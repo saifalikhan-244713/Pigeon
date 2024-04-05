@@ -1,116 +1,3 @@
-// // const Charts = () => {
-// //   return (
-// //     <div>Charts</div>
-// //   )
-// // }
-// import {
-//   ArcElement,
-//   CategoryScale,
-//   Chart as ChartJS,
-//   Filler,
-//   Legend,
-//   LineElement,
-//   LinearScale,
-//   PointElement,
-//   Tooltip,
-// } from "chart.js";
-// import { Doughnut, Line } from "react-chartjs-2";
-// import { purpleLight } from "../../constants/color";
-// import { purple } from "../../constants/color";
-
-// ChartJS.register(
-//   Tooltip,
-//   CategoryScale,
-//   LinearScale,
-//   LineElement,
-//   PointElement,
-//   Filler,
-//   ArcElement,
-//   Legend
-// );
-
-// const lineChartOptions = {
-//   responsive: true,
-//   plugins: {
-//     legend: {
-//       display: false,
-//     },
-//     title: {
-//       display: false,
-//     },
-//   },
-
-//   scales: {
-//     x: {
-//       grid: {
-//         display: false,
-//       },
-//     },
-//     y: {
-//       beginAtZero: true,
-//       grid: {
-//         display: false,
-//       },
-//     },
-//   },
-// };
-
-// const LineChart = ({ value = [] }) => {
-//   //   const data = {
-//   //     labels,
-//   //     datasets: [
-//   //       {
-//   //         data: value,
-//   //         label: "Messages",
-//   //         fill: true,
-//   //         backgroundColor: purpleLight,
-//   //         borderColor: purple,
-//   //       },
-//   //     ],
-//   //   };
-//   const data = {
-//     labels: ["january", "february", "march", "april"],
-//     datasets: [
-//       {
-//         data: value,
-//         label: "Messages",
-//         fill: true,
-//         backgroundColor: purpleLight,
-//         borderColor: purple,
-//       },
-//     ],
-//   };
-//   // return <Line data={data} options={lineChartOptions} />;
-//   return <Line data={data} options={lineChartOptions} />;
-// };
-// const DoughnutChart = () => {
-//   //   const data = {
-//   //     labels,
-//   //     datasets: [
-//   //       {
-//   //         data: value,
-//   //         backgroundColor: [purpleLight, orangeLight],
-//   //         hoverBackgroundColor: [purple, orange],
-//   //         borderColor: [purple, orange],
-//   //         offset: 40,
-//   //       },
-//   //     ],
-//   //   };
-//   //   return (
-//   //     <Doughnut
-//   //       style={{ zIndex: 10 }}
-//   //       data={data}
-//   //       options={doughnutChartOptions}
-//   //     />
-//   //   );
-//   return <div>Doughnut charts</div>;
-// };
-
-// export default { LineChart, DoughnutChart };
-
-// {iuhefuhjolsndv}
-
-// Import necessary modules
 import {
   ArcElement,
   CategoryScale,
@@ -183,8 +70,18 @@ export const LineChart = ({ value = [] }) => {
   return <Line data={data} options={lineChartOptions} />;
 };
 
+const doughnutChartOptions = {
+  responsive: true,
+  plugins: {
+    legend: {
+      display: false,
+    },
+  },
+  cutout: 120,
+};
+
 // Define DoughnutChart component
-export const DoughnutChart = ({ value = [] }) => {
+export const DoughnutChart = ({ value = [], labels = [] }) => {
   const data = {
     labels,
     datasets: [
@@ -198,5 +95,11 @@ export const DoughnutChart = ({ value = [] }) => {
     ],
   };
 
-  return <Doughnut data={data} />;
+  return (
+    <Doughnut
+      style={{ zIndex: 10 }}
+      data={data}
+      options={doughnutChartOptions}
+    />
+  );
 };
